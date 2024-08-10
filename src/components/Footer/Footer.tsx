@@ -14,6 +14,7 @@ import styles from "./Footer.module.scss";
 
 const Footer: React.FC = () => {
 	const iconColor = { fillColor: "white", strokeColor: "white" };
+
 	return (
 		<footer className={styles.footer}>
 			<div className={styles.left}>
