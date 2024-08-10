@@ -1,13 +1,13 @@
 @import "variables.scss";
 
-// Миксин для шпалерия с центровкой контента
+// Центрирует содержимое контейнера по горизонтали и вертикали с помощью Flexbox.  @include flex-center;
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-// Миксин для адаптивной типографики
+// Устанавливает адаптивный размер шрифта, высоту строки и толщину шрифта для заголовков.  @include responsive-text(24px, 1.5, 700);
 @mixin responsive-text(
 	$font-size,
 	$line-height,
@@ -19,12 +19,12 @@
 	font-weight: $font-weight;
 }
 
-// Применение тинтов и шейдов к цветам
+// Применяет осветление или затемнение цвета в зависимости от процента, для создания оттенка. @include apply-tint-shade(#3498db, 20%);
 @mixin apply-tint-shade($color, $percentage) {
 	color: mix(white, $color, $percentage);
 }
 
-// Миксин для теней
+// Добавляет лёгкую тень к элементу, что делает его более объёмным. @include box-shadow("light");
 @mixin box-shadow($shadow-type: "medium") {
 	@if $shadow-type == "light" {
 		box-shadow: $box-shadow-light;
@@ -33,12 +33,12 @@
 	}
 }
 
-// Миксин для адаптивных переходов
+// Обеспечивает плавные переходы для свойств, указанных в параметрах, например, изменения цвета.  @include transition(color);
 @mixin transition($properties: all) {
 	transition: $properties 0.3s ease-in-out; // Установлена фиксированная продолжительность перехода
 }
 
-// Миксин для применения основных цветов фона и текста
+// Устанавливает цвета фона и текста, соответствующие общей теме проекта. @include theme-colors(#f4f4f4, #333);
 @mixin theme-colors(
 	$bg: $primary-background-color,
 	$text: $primary-text-color
@@ -47,44 +47,59 @@
 	color: $text;
 }
 
-// Миксин для радиуса границ
+// Добавляет закруглённые углы к элементу. @include border-radius(12px);
 @mixin border-radius($radius: 4px) {
 	// Установлен фиксированный радиус границы
 	border-radius: $radius;
 }
 
-// Миксин для текстового обрезания (ellipsis)
+// Обрезает текст с многоточием для фиксированной ширины элемента. @include text-ellipsis;
 @mixin text-ellipsis {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
-// Миксин для центрирования контейнера
-@mixin center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-// Миксин для переходов
-@mixin transition($property, $duration: 0.3s, $timing-function: ease-in-out) {
-	transition: #{$property} #{$duration} #{$timing-function};
-}
-
-// Миксин для создания медиазапросов
+// Изменяет свойства элемента в зависимости от медиазапросов, например, для адаптации на мобильных устройствах. @include media("md") { .... }
 @mixin media($breakpoint) {
-	@if $breakpoint == "small" {
-		@media (max-width: 600px) {
+	// Для очень маленьких устройств (телефоны)
+	@if $breakpoint == "xs" {
+		@media (max-width: 575px) {
 			@content;
 		}
-	} @else if $breakpoint == "medium" {
-		@media (max-width: 900px) {
+
+		// Для маленьких устройств (телефоны в ландшафтной ориентации)
+	} @else if $breakpoint == "sm" {
+		@media (max-width: 767px) {
 			@content;
 		}
-	} @else if $breakpoint == "large" {
-		@media (max-width: 1200px) {
+
+		// Для средних устройств (планшеты)
+	} @else if $breakpoint == "md" {
+		@media (max-width: 991px) {
 			@content;
 		}
+
+		// Для больших устройств (настольные компьютеры)
+	} @else if $breakpoint == "lg" {
+		@media (max-width: 1199px) {
+			@content;
+		}
+
+		// Для очень больших устройств (крупные настольные компьютеры)
+	} @else if $breakpoint == "xl" {
+		@media (max-width: 1399px) {
+			@content;
+		}
+
+		// Для очень-очень больших устройств (еще более крупные настольные компьютеры)
+	} @else if $breakpoint == "xxl" {
+		@media (max-width: 1600px) {
+			@content;
+		}
+
+		// Предупреждение в случае неверно указанного брейкпойнта
+	} @else {
+		@warn "Неизвестный брейкпойнт: #{$breakpoint}. Укажите корректное значение.";
 	}
 }
