@@ -1,0 +1,90 @@
+@import "variables.scss";
+
+// Миксин для шпалерия с центровкой контента
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// Миксин для адаптивной типографики
+@mixin responsive-text(
+	$font-size,
+	$line-height,
+	$font-weight: $font-weight-base
+) {
+	font-family: $font-family-base;
+	font-size: $font-size;
+	line-height: $line-height;
+	font-weight: $font-weight;
+}
+
+// Применение тинтов и шейдов к цветам
+@mixin apply-tint-shade($color, $percentage) {
+	color: mix(white, $color, $percentage);
+}
+
+// Миксин для теней
+@mixin box-shadow($shadow-type: "medium") {
+	@if $shadow-type == "light" {
+		box-shadow: $box-shadow-light;
+	} @else if $shadow-type == "medium" {
+		box-shadow: $box-shadow-medium;
+	}
+}
+
+// Миксин для адаптивных переходов
+@mixin transition($properties: all) {
+	transition: $properties 0.3s ease-in-out; // Установлена фиксированная продолжительность перехода
+}
+
+// Миксин для применения основных цветов фона и текста
+@mixin theme-colors(
+	$bg: $primary-background-color,
+	$text: $primary-text-color
+) {
+	background-color: $bg;
+	color: $text;
+}
+
+// Миксин для радиуса границ
+@mixin border-radius($radius: 4px) {
+	// Установлен фиксированный радиус границы
+	border-radius: $radius;
+}
+
+// Миксин для текстового обрезания (ellipsis)
+@mixin text-ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// Миксин для центрирования контейнера
+@mixin center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// Миксин для переходов
+@mixin transition($property, $duration: 0.3s, $timing-function: ease-in-out) {
+	transition: #{$property} #{$duration} #{$timing-function};
+}
+
+// Миксин для создания медиазапросов
+@mixin media($breakpoint) {
+	@if $breakpoint == "small" {
+		@media (max-width: 600px) {
+			@content;
+		}
+	} @else if $breakpoint == "medium" {
+		@media (max-width: 900px) {
+			@content;
+		}
+	} @else if $breakpoint == "large" {
+		@media (max-width: 1200px) {
+			@content;
+		}
+	}
+}

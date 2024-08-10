@@ -1,0 +1,26 @@
+@import "normalize.css"; // Импорт normalize.css
+
+@import "variables"; // Переменные
+@import "mixins"; // Миксины
+
+body {
+	@include responsive-text($font-size-base, $font-size-base);
+	color: $primary-text-color;
+	background-color: $primary-background-color;
+}
+
+h1 {
+	@include responsive-text($font-size-h1, $line-height-h1);
+}
+
+h2 {
+	@include responsive-text($font-size-h2, $line-height-h2);
+}
+
+h3 {
+	@include responsive-text($font-size-h3, $line-height-h3);
+}
+
+h4 {
+	@include responsive-text($font-size-h4, $line-height-h4);
+}

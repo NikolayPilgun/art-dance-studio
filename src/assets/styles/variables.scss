@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+// Цветовые переменные
+$primary-text-color: #000000; // Основной цвет шрифта
+$secondary-text-color: #ffffff; // Вторичный цвет шрифта
+$tertiary-text-color: #393939; // Дополнительный цвет шрифта
+$accent-color: #007bff; // Основной акцентный цвет
+$accent-color-light: #66ccff; // Светлый акцентный цвет
+
+// Фоновые цвета
+$primary-background-color: #ffffff; // Основной фоновый цвет
+$secondary-background-color: #000000; // Второй фоновый цвет
+
+// Шрифты и типографика
+$font-family-base: "Inter", sans-serif; // Основной шрифт
+$font-weight-base: 400; // Базовый вес шрифта
+
+$font-size-h1: 100px; // Размер шрифта для H1
+$line-height-h1: 120px; // Высота строки для H1
+
+$font-size-h2: 90px; // Размер шрифта для H2
+$line-height-h2: 100px; // Высота строки для H2
+
+$font-size-h3: 32px; // Размер шрифта для H3
+$line-height-h3: 44px; // Высота строки для H3
+
+$font-size-h4: 28px; // Размер шрифта для H4
+$line-height-h4: 40px; // Высота строки для H4
+
+$font-size-base: 20px; // Основной размер шрифта
+$font-size-secondary: 16px; // Второстепенный размер шрифта
+
+// Тени
+$box-shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+$box-shadow-medium: 0 3px 6px rgba(0, 0, 0, 0.15);
