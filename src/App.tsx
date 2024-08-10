@@ -4,7 +4,7 @@ import Navigation from "./components/Header/Navigation/Navigation";
 
 const App: React.FC = () => {
 	return (
-		<div>
+		<div className="container">
 			<Navigation />
 			<Outlet />
 		</div>

@@ -1,12 +1,22 @@
-@import "normalize.css"; // Импорт normalize.css
-
+@import "normalize"; // Normalize.css для сброса стилей браузера
 @import "variables"; // Переменные
 @import "mixins"; // Миксины
 
+html,
+body {
+	width: 100%;
+	min-height: 100vh;
+}
 body {
 	@include responsive-text($font-size-base, $font-size-base);
 	color: $primary-text-color;
 	background-color: $primary-background-color;
+}
+.container {
+	max-width: 1920px;
+	margin: 0 auto;
+	width: 100%;
+	min-height: 100vh;
 }
 
 h1 {
@@ -23,4 +33,7 @@ h3 {
 
 h4 {
 	@include responsive-text($font-size-h4, $line-height-h4);
+}
+a {
+	text-decoration: none;
 }
