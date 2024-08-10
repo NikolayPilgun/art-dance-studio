@@ -1,0 +1,11 @@
+// Home.module.scss
+.home {
+	height: 700px;
+	margin-top: -110px;
+	padding-top: 110px;
+
+	background-image: url("./../../assets/images/Home/HomeBG.png");
+	background-size: cover; /* Изображение будет растянуто по всему элементу */
+	background-position: center; /* Центрирование изображения */
+	background-repeat: no-repeat;
+}

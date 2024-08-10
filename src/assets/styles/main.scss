@@ -8,15 +8,19 @@ body {
 	min-height: 100vh;
 }
 body {
-	@include responsive-text($font-size-base, $font-size-base);
-	color: $primary-text-color;
-	background-color: $primary-background-color;
+	@include responsive-text($font-size-base, $line-height-base);
+	@include theme-colors();
 }
 .container {
 	max-width: 1920px;
 	margin: 0 auto;
 	width: 100%;
 	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.body {
+	flex: 1;
 }
 
 h1 {
@@ -33,6 +37,9 @@ h3 {
 
 h4 {
 	@include responsive-text($font-size-h4, $line-height-h4);
+}
+h5 {
+	@include responsive-text($font-size-secondary, $line-height-secondary);
 }
 a {
 	text-decoration: none;

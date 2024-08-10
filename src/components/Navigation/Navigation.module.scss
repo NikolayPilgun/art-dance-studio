@@ -1,0 +1,26 @@
+.nav {
+	display: flex;
+	flex-direction: row;
+	text-transform: uppercase;
+
+	.link {
+		color: inherit;
+		transition: color 0.3s ease-in-out;
+		&:hover {
+			color: #f058b3;
+		}
+	}
+
+	.activeLink {
+		color: #ec008c;
+	}
+}
+.row {
+	flex-direction: row;
+	gap: 40px;
+}
+
+.column {
+	flex-direction: column;
+	gap: 20px;
+}

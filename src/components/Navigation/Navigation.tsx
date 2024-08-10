@@ -1,3 +1,4 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Navigation.module.scss";
 
@@ -6,7 +7,11 @@ interface Route {
 	label: string;
 }
 
-const Navigation: React.FC = () => {
+interface NavigationProps {
+	orientation: "row" | "column";
+}
+
+const Navigation: React.FC<NavigationProps> = ({ orientation }) => {
 	const routes: Route[] = [
 		{ path: "/", label: "Главная" },
 		{ path: "about", label: "О нас" },
@@ -15,7 +20,11 @@ const Navigation: React.FC = () => {
 	];
 
 	return (
-		<nav className={styles.nav}>
+		<nav
+			className={`${styles.nav} ${
+				orientation === "row" ? styles.row : styles.column
+			}`}
+		>
 			{routes.map((route) => (
 				<NavLink
 					key={route.path}

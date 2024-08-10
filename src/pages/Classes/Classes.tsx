@@ -1,3 +1,6 @@
-// src/pages/Classes.tsx
-const Classes = () => <div>Классы: Узнайте больше о наших классах.</div>;
+import React from "react";
+import styles from "./Classes.module.scss";
+
+const Classes: React.FC = () => <div className={styles.classes}>Classes</div>;
+
 export default Classes;

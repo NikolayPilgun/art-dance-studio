@@ -1,0 +1,11 @@
+// Home.module.scss
+.classes {
+	height: 930px;
+	margin-top: -110px;
+	padding-top: 110px;
+
+	background-image: url("./../../assets/images/Classes/ClassesBG.png");
+	background-size: cover; /* Изображение будет растянуто по всему элементу */
+	background-position: center; /* Центрирование изображения */
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,61 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 110px;
+	background-color: transparent;
+	z-index: 10;
+	padding: 0px 50px;
+}
+
+.logo {
+	h5 {
+		letter-spacing: 2px;
+	}
+}
+.address {
+	text-align: right;
+}
+.social {
+	display: flex;
+	gap: 5px;
+	span {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 48px;
+		height: 48px;
+		border: 1px solid white;
+	}
+}
+// Условие location.pathname
+
+.homeHeader {
+	color: white;
+	border-bottom: 1px solid white;
+	.social {
+		span {
+			border: 1px solid white;
+		}
+	}
+}
+
+.aboutContactHeader {
+	color: black;
+	border-bottom: 1px solid gray;
+	.social {
+		span {
+			border: 1px solid gray;
+		}
+	}
+}
+
+.classesHeader {
+	color: white;
+	border-bottom: 1px solid white;
+	.social {
+		span {
+			border: 1px solid white;
+		}
+	}
+}
