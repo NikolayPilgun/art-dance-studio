@@ -1,10 +1,10 @@
 import React from "react";
+import ArrowIcon from "../Icons/ArrowIcon";
 import IconFour from "../Icons/IconFour";
 import IconOne from "../Icons/IconOne";
 import IconThree from "../Icons/IconThree";
 import IconTwo from "../Icons/IconTwo";
 import Navigation from "../Navigation/Navigation";
-import FooterArrow from "./../../assets/images/Footer/arrow-up-right.svg";
 import FooterClock from "./../../assets/images/Footer/clock.svg";
 import FooterMail from "./../../assets/images/Footer/mail.svg";
 import FooterMap from "./../../assets/images/Footer/map-pin.svg";
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
 				</div>
 				<div className={styles.button}>
 					<button>
-						Записаться <img src={FooterArrow} alt="FooterArrow" />
+						Записаться <ArrowIcon />
 					</button>
 					<div className={styles.social}>
 						<span>
