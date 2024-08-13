@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CustomArrowIcon from "../../Icons/CustomArrowIcon";
 import TeachIMG1 from "./../../../assets/images/Home/Teachers/TeachIMG1.png";
 import TeachIMG2 from "./../../../assets/images/Home/Teachers/TeachIMG2.png";
@@ -61,7 +61,33 @@ const itemsTeachersData: ItemsTeachersData[] = [
 
 const Teachers: React.FC = () => {
 	const [startIndex, setStartIndex] = useState(0);
-	const visibleSlides = 5;
+	const [visibleSlides, setVisibleSlides] = useState(1);
+
+	useEffect(() => {
+		const updateVisibleSlides = () => {
+			const width = window.innerWidth;
+
+			if (width >= 1280) {
+				setVisibleSlides(5);
+			} else if (width >= 1024) {
+				setVisibleSlides(4);
+			} else if (width >= 768) {
+				setVisibleSlides(3);
+			} else if (width >= 480) {
+				setVisibleSlides(2);
+			} else {
+				setVisibleSlides(1);
+			}
+		};
+
+		updateVisibleSlides();
+		window.addEventListener("resize", updateVisibleSlides);
+
+		return () => {
+			window.removeEventListener("resize", updateVisibleSlides);
+		};
+	}, []);
+
 	const slideCount = itemsTeachersData.length;
 
 	const handlePrevClick = () => {
