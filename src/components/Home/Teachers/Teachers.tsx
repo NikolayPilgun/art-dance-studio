@@ -61,7 +61,7 @@ const itemsTeachersData: ItemsTeachersData[] = [
 
 const Teachers: React.FC = () => {
 	const [startIndex, setStartIndex] = useState(0);
-	const [visibleSlides, setVisibleSlides] = useState(1);
+	const [visibleSlides, setVisibleSlides] = useState(5);
 
 	useEffect(() => {
 		const updateVisibleSlides = () => {
@@ -103,7 +103,7 @@ const Teachers: React.FC = () => {
 	};
 
 	return (
-		<div className={styles.otherDirections}>
+		<div className={styles.teachers}>
 			<div className={styles.title}>
 				<h2>педагоги</h2>
 				<div className={styles.control}>
