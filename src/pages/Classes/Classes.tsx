@@ -1,6 +1,10 @@
 import React from "react";
-import styles from "./Classes.module.scss";
+import BannerClasses from "../../components/Classes/BannerClasses/BannerClasses";
 
-const Classes: React.FC = () => <div className={styles.classes}>Classes</div>;
+const Classes: React.FC = () => (
+	<>
+		<BannerClasses />
+	</>
+);
 
 export default Classes;
