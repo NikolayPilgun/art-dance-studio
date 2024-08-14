@@ -73,7 +73,7 @@ const ComponentEvents: React.FC = () => {
 		const heights = titleRefs.current.map((ref) => ref?.offsetHeight || 0);
 		const maxHeight = Math.max(...heights);
 		titleRefs.current.forEach((ref) => {
-			if (ref) ref.style.height = `${maxHeight}px`;
+			if (ref) ref.style.minHeight = `${maxHeight}px`; // изменено на minHeight
 		});
 	}, []);
 
@@ -85,11 +85,11 @@ const ComponentEvents: React.FC = () => {
 			else if (width >= 1024) setVisibleSlides(2);
 			else setVisibleSlides(1);
 
-			adjustTitleHeights(); // Вызываем функцию пересчета высоты
+			adjustTitleHeights(); // вызов для пересчета minHeight
 		};
 
 		window.addEventListener("resize", updateVisibleSlides);
-		updateVisibleSlides(); // Начальный вызов для установки по текущему размеру
+		updateVisibleSlides(); // начальный вызов для установки по текущему размеру
 
 		return () => window.removeEventListener("resize", updateVisibleSlides);
 	}, [adjustTitleHeights]);
