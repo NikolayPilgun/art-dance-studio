@@ -4,12 +4,14 @@ type ArrowIconProps = {
 	width?: number;
 	height?: number;
 	strokeColor?: string;
+	transform?: string;
 };
 
 const ArrowIcon: React.FC<ArrowIconProps> = ({
 	width = 23,
 	height = 22,
 	strokeColor = "black",
+	transform = "",
 }) => (
 	<svg
 		width={width}
@@ -17,6 +19,7 @@ const ArrowIcon: React.FC<ArrowIconProps> = ({
 		viewBox="0 0 23 22"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
+		transform={transform}
 	>
 		<path
 			d="M5.65625 17.3438L17.375 5.625"
