@@ -15,11 +15,11 @@ type FormErrors = {
 
 const OurPrices: React.FC = () => {
 	const [openIndex, setOpenIndex] = useState<number | null>(null);
-	const [formData, setFormData] = useState<FormData>({
-		question: "",
-		phone: "",
-	});
-	const [errors, setErrors] = useState<FormErrors>({});
+	const [formDatas, setFormDatas] = useState<FormData[]>([
+		{ question: "", phone: "" },
+		{ question: "", phone: "" },
+	]);
+	const [formErrors, setFormErrors] = useState<FormErrors[]>([{}, {}]);
 	const contentRefs = useRef<HTMLDivElement[]>([]);
 
 	const validateInput = (name: keyof FormData, value: string): boolean => {
@@ -30,27 +30,42 @@ const OurPrices: React.FC = () => {
 		return patterns[name].test(value);
 	};
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = (
+		index: number,
+		e: React.ChangeEvent<HTMLInputElement>
+	) => {
 		const { id, value } = e.target;
 		const field = id as keyof FormData;
 
-		setFormData((prev) => ({ ...prev, [field]: value }));
+		setFormDatas((prev) =>
+			prev.map((data, i) => (i === index ? { ...data, [field]: value } : data))
+		);
 
 		if (validateInput(field, value)) {
-			setErrors((prev) => ({ ...prev, [field]: undefined }));
+			setFormErrors((prev) =>
+				prev.map((errors, i) =>
+					i === index ? { ...errors, [field]: undefined } : errors
+				)
+			);
 		} else {
 			const errorMessages = {
 				question:
 					"Вопрос может содержать только буквы, цифры и пробелы, и быть не более 300 символов.",
 				phone: "Введите корректный номер телефона.",
 			};
-			setErrors((prev) => ({ ...prev, [field]: errorMessages[field] }));
+			setFormErrors((prev) =>
+				prev.map((errors, i) =>
+					i === index ? { ...errors, [field]: errorMessages[field] } : errors
+				)
+			);
 		}
 	};
 
-	const handleSubmit = (event: React.FormEvent) => {
+	const handleSubmit = (index: number, event: React.FormEvent) => {
 		event.preventDefault();
 
+		const formData = formDatas[index];
+		const errors = formErrors[index];
 		const newErrors: FormErrors = {};
 		(Object.keys(formData) as Array<keyof FormData>).forEach((key) => {
 			if (!validateInput(key, formData[key])) {
@@ -69,9 +84,15 @@ const OurPrices: React.FC = () => {
 				.then(() => alert("Форма отправлена!"))
 				.catch((error) => console.error("Ошибка отправки формы:", error));
 
-			setFormData({ question: "", phone: "" });
+			setFormDatas((prev) =>
+				prev.map((data, i) =>
+					i === index ? { question: "", phone: "" } : data
+				)
+			);
 		} else {
-			setErrors(newErrors);
+			setFormErrors((prev) =>
+				prev.map((errors, i) => (i === index ? newErrors : errors))
+			);
 		}
 	};
 
@@ -362,14 +383,17 @@ const OurPrices: React.FC = () => {
 													и ответим на интересующие вопросы
 												</h4>
 											</div>
-											<form onSubmit={handleSubmit} className={styles.form}>
+											<form
+												onSubmit={(e) => handleSubmit(0, e)}
+												className={styles.form}
+											>
 												<div className={styles.inputBlock}>
 													{(["question", "phone"] as Array<keyof FormData>).map(
 														(field) => (
 															<div key={field} className={styles.field}>
-																{errors[field] && (
+																{formErrors[0][field] && (
 																	<span className={styles.error}>
-																		{errors[field]}
+																		{formErrors[0][field]}
 																	</span>
 																)}
 																<input
@@ -380,8 +404,8 @@ const OurPrices: React.FC = () => {
 																			? "Номер телефона"
 																			: "Ваш вопрос"
 																	}
-																	value={formData[field]}
-																	onChange={handleChange}
+																	value={formDatas[0][field]}
+																	onChange={(e) => handleChange(0, e)}
 																/>
 															</div>
 														)
@@ -422,15 +446,17 @@ const OurPrices: React.FC = () => {
 													танцевальных вещей и всего необходимого
 												</h4>
 											</div>
-
-											<form onSubmit={handleSubmit} className={styles.form}>
+											<form
+												onSubmit={(e) => handleSubmit(1, e)}
+												className={styles.form}
+											>
 												<div className={styles.inputBlock}>
 													{(["question", "phone"] as Array<keyof FormData>).map(
 														(field) => (
 															<div key={field} className={styles.field}>
-																{errors[field] && (
+																{formErrors[1][field] && (
 																	<span className={styles.error}>
-																		{errors[field]}
+																		{formErrors[1][field]}
 																	</span>
 																)}
 																<input
@@ -441,8 +467,8 @@ const OurPrices: React.FC = () => {
 																			? "Номер телефона"
 																			: "Ваш вопрос"
 																	}
-																	value={formData[field]}
-																	onChange={handleChange}
+																	value={formDatas[1][field]}
+																	onChange={(e) => handleChange(1, e)}
 																/>
 															</div>
 														)
