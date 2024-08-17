@@ -12,7 +12,7 @@ const Header: React.FC = () => {
 	const location = useLocation();
 
 	let headerClass;
-	let iconColor = { fillColor: "white", strokeColor: "white" }; // белый цвет по умолчанию
+	let iconColor = { fillColor: "white", strokeColor: "white" };
 
 	switch (location.pathname) {
 		case "/":
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
 		case "/about":
 		case "/contact":
 			headerClass = styles.aboutContactHeader;
-			iconColor = { fillColor: "black", strokeColor: "black" }; // черный цвет для этих маршрутов
+			iconColor = { fillColor: "black", strokeColor: "black" };
 			break;
 		case "/classes":
 			headerClass = styles.classesHeader;
