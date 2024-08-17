@@ -10,27 +10,49 @@
 			height: 100%;
 			object-fit: cover;
 		}
+		@media (max-width: 1024px) {
+			display: none;
+		}
 	}
 
 	.formContainer {
 		flex: 1;
 		margin: 20px 50px 20px 50px;
 		border: 1px solid black;
+		@media (max-width: 576px) {
+			margin: 20px;
+		}
 		.form {
 			display: flex;
 			flex-direction: column;
 			max-width: 840px;
 			width: 100%;
 			padding: 40px;
+			@media (max-width: 576px) {
+				padding: 10px;
+			}
 		}
 		.description {
 			text-transform: uppercase;
 			p {
 				margin-bottom: 30px;
+				@media (max-width: 576px) {
+					margin-bottom: 20px;
+				}
 			}
 			h2 {
 				margin-bottom: 70px;
 				font-weight: 300;
+				@media (max-width: 768px) {
+					font-size: 60px;
+					line-height: 70px;
+					margin-bottom: 60px;
+				}
+				@media (max-width: 576px) {
+					font-size: 40px;
+					line-height: 60px;
+					margin-bottom: 40px;
+				}
 			}
 			p:nth-of-type(2) {
 				text-transform: none;
@@ -41,6 +63,9 @@
 			display: flex;
 			gap: 10px;
 			margin-bottom: 20px;
+			@media (max-width: 576px) {
+				flex-direction: column;
+			}
 			.field {
 				flex: 1;
 				position: relative;
@@ -66,6 +91,9 @@
 					font-size: 12px;
 					line-height: 16px;
 					text-align: left;
+					@media (max-width: 576px) {
+						top: -70px;
+					}
 				}
 			}
 		}

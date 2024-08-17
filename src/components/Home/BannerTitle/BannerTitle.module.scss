@@ -7,11 +7,24 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	@media (max-width: 480px) {
+		height: auto;
+	}
 	.container {
 		padding: 80px 50px 20px;
+		@media (max-width: 768px) {
+			padding: 40px 20px;
+		}
 		.title {
 			margin-bottom: 20px;
-
+			@media (max-width: 1024px) {
+				font-size: 60px;
+				line-height: 80px;
+			}
+			@media (max-width: 480px) {
+				font-size: 30px;
+				line-height: 34px;
+			}
 			span {
 				&:first-of-type {
 					font-weight: 600;
@@ -26,6 +39,10 @@
 		.subTitle {
 			text-transform: uppercase;
 			font-weight: 300;
+			@media (max-width: 480px) {
+				font-size: 14px;
+				line-height: 18px;
+			}
 		}
 	}
 }

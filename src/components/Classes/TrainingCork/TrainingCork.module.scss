@@ -1,20 +1,36 @@
 .container {
 	margin: 100px 50px;
+	@media (max-width: 1024px) {
+		margin: 60px 20px;
+	}
 	.title {
 		display: flex;
 		justify-content: space-between;
 		align-items: flex-start;
 		gap: 20px;
+		@media (max-width: 1024px) {
+			flex-direction: column;
+		}
 		.left {
 			flex: 1;
 			h2 {
 				text-transform: uppercase;
 				font-weight: 300;
 				margin-bottom: 30px;
+				@media (max-width: 1024px) {
+					font-size: 60px;
+					line-height: 70px;
+				}
+				@media (max-width: 768px) {
+					font-size: 40px;
+					line-height: 50px;
+				}
 			}
 			p {
 				max-width: 800px;
 				color: #393939;
+				font-size: 16px;
+				line-height: 20px;
 			}
 		}
 		.right {
@@ -24,10 +40,16 @@
 				color: #393939;
 				text-transform: uppercase;
 			}
+			@media (max-width: 480px) {
+				text-align: left;
+			}
 		}
 	}
 	.options {
 		margin: 80px 0px 20px;
+		@media (max-width: 480px) {
+			margin: 40px 0px 20px;
+		}
 
 		.items {
 			display: flex;
@@ -49,11 +71,22 @@
 					padding: 20px 40px;
 					border: 1px solid black;
 					border-top: none;
+					@media (max-width: 480px) {
+						padding: 10px 20px;
+					}
 					h4 {
 						text-transform: uppercase;
+						@media (max-width: 480px) {
+							font-size: 20px;
+							line-height: 24px;
+						}
 					}
 					p {
 						color: #393939;
+						@media (max-width: 480px) {
+							font-size: 16px;
+							line-height: 24px;
+						}
 					}
 				}
 			}

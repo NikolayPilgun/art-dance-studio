@@ -239,7 +239,10 @@ const OurPrices: React.FC = () => {
 											<div style={{ margin: "30px 0px" }}>
 												<p>
 													<span>1 занятие</span>
-													<span style={{ textAlign: "right" }}>
+													<span
+														style={{ textAlign: "right" }}
+														className={styles.spanFlex}
+													>
 														<span>от 3 000 ₽</span>
 														<span>(длительность 1 час)</span>
 													</span>
@@ -286,14 +289,20 @@ const OurPrices: React.FC = () => {
 												<h4>Аренда зала:</h4>
 												<p>
 													<span>2 человека</span>
-													<span style={{ textAlign: "right" }}>
+													<span
+														style={{ textAlign: "right" }}
+														className={styles.spanFlex}
+													>
 														<span>2 000 ₽/час</span>
 														<span style={{ fontSize: "14px" }}>до 17:00</span>
 													</span>
 												</p>
 												<p>
 													<span>2 человека</span>
-													<span style={{ textAlign: "right" }}>
+													<span
+														style={{ textAlign: "right" }}
+														className={styles.spanFlex}
+													>
 														<span>3 000 ₽/час</span>
 														<span style={{ fontSize: "14px" }}>
 															после 17:00 в будние дни/выходные/праздничные дни

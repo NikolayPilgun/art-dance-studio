@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArrowIcon from "../../Icons/ArrowIcon";
 import CustomArrowIcon from "../../Icons/CustomArrowIcon";
 import odImg1 from "./../../../assets/images/Home/OtherDirections/odImg1.png";
@@ -6,7 +6,7 @@ import odImg2 from "./../../../assets/images/Home/OtherDirections/odImg2.png";
 import odImg3 from "./../../../assets/images/Home/OtherDirections/odImg3.png";
 import styles from "./OtherDirections.module.scss";
 
-interface ItemsData {
+interface ItemsOtherData {
 	id: number;
 	title: string;
 	subTitle: string;
@@ -14,7 +14,7 @@ interface ItemsData {
 	picture: string;
 }
 
-const itemsData: ItemsData[] = [
+const itemsOtherData: ItemsOtherData[] = [
 	{
 		id: 1,
 		title: "Pole Dance Exotic Pro",
@@ -40,7 +40,30 @@ const itemsData: ItemsData[] = [
 
 const OtherDirections: React.FC = () => {
 	const [startIndex, setStartIndex] = useState(0);
-	const visibleSlides = 2;
+	const [visibleSlides, setVisibleSlides] = useState(2);
+
+	useEffect(() => {
+		const updateVisibleSlides = () => {
+			const width = window.innerWidth;
+
+			if (width >= 1280) {
+				setVisibleSlides(2);
+			} else if (width >= 1024) {
+				setVisibleSlides(2);
+			} else if (width <= 1024) {
+				setVisibleSlides(1);
+			}
+		};
+
+		updateVisibleSlides();
+		window.addEventListener("resize", updateVisibleSlides);
+
+		return () => {
+			window.removeEventListener("resize", updateVisibleSlides);
+		};
+	}, []);
+
+	const slideCount = itemsOtherData.length;
 
 	const handlePrevClick = () => {
 		if (startIndex > 0) {
@@ -49,7 +72,7 @@ const OtherDirections: React.FC = () => {
 	};
 
 	const handleNextClick = () => {
-		if (startIndex < itemsData.length - visibleSlides) {
+		if (startIndex < slideCount - visibleSlides) {
 			setStartIndex(startIndex + 1);
 		}
 	};
@@ -75,16 +98,14 @@ const OtherDirections: React.FC = () => {
 							onClick={handleNextClick}
 							style={{
 								cursor:
-									startIndex >= itemsData.length - visibleSlides
+									startIndex >= slideCount - visibleSlides
 										? "default"
 										: "pointer",
 							}}
 						>
 							<CustomArrowIcon
 								strokeColor={
-									startIndex >= itemsData.length - visibleSlides
-										? "grey"
-										: "black"
+									startIndex >= slideCount - visibleSlides ? "grey" : "black"
 								}
 							/>
 						</span>
@@ -97,7 +118,7 @@ const OtherDirections: React.FC = () => {
 							transform: `translateX(-${(startIndex * 100) / visibleSlides}%)`,
 						}}
 					>
-						{itemsData.map((item) => (
+						{itemsOtherData.map((item) => (
 							<div
 								key={item.id}
 								className={`${styles.item} 

@@ -6,11 +6,22 @@
 	background-color: #000000;
 	color: #ffffff;
 	padding: 50px;
+	@media (max-width: 768px) {
+		height: auto;
+		flex-direction: column;
+		gap: 20px;
+		justify-content: center;
+		align-items: center;
+	}
 }
 
 .left {
 	.logo {
 		padding-bottom: 30px;
+		@media (max-width: 1024px) {
+			transform: scale(0.8);
+		}
+
 		h5 {
 			letter-spacing: 2px;
 		}
@@ -20,19 +31,51 @@
 		line-height: 24px;
 		text-align: left;
 		color: #818181;
+		@media (max-width: 1024px) {
+			font-size: 14px;
+			line-height: 16px;
+		}
+	}
+}
+.center {
+	@media (max-width: 768px) {
+		display: none;
 	}
 }
 .right {
 	.address {
 		margin-bottom: 20px;
+		@media (max-width: 768px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
+		}
+
 		p {
 			display: flex;
 			align-items: center;
 			gap: 5px;
 			margin-bottom: 10px;
+			@media (max-width: 1024px) {
+				font-size: 16px;
+				line-height: 20px;
+			}
+			@media (max-width: 480px) {
+				font-size: 14px;
+				line-height: 18px;
+				text-align: center;
+			}
 		}
 	}
 	.button {
+		@media (max-width: 768px) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 		button {
 			display: flex;
 			align-items: center;
@@ -46,6 +89,12 @@
 			cursor: pointer;
 			margin-bottom: 10px;
 			text-transform: uppercase;
+
+			@media (max-width: 1024px) {
+				width: auto;
+				height: auto;
+				padding: 10px 15px;
+			}
 
 			&:hover {
 				background-color: #f0f0f0; /* Optional hover effect */
@@ -61,6 +110,9 @@
 				width: 48px;
 				height: 48px;
 				border: 1px solid white;
+				@media (max-width: 1024px) {
+					transform: scale(0.8);
+				}
 			}
 		}
 	}
